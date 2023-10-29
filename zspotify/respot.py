@@ -17,8 +17,8 @@ class Respot:
     def __init__(
         self, config_dir, force_premium, credentials, audio_format, antiban_wait_time
     ):
-        self.config_dir: Path = config_dir
-        self.credentials: Path = credentials
+        self.config_dir: Path = Path(config_dir)
+        self.credentials: Path = Path(credentials)
         self.force_premium: bool = force_premium
         self.audio_format: str = audio_format
         self.antiban_wait_time: int = antiban_wait_time
