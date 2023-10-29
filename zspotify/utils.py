@@ -1,13 +1,18 @@
 import os
 import json
 import datetime
-
+from pathlib import Path
 
 class Archive:
 
     def __init__(self, file):
-        self.file = file
+        self.file = Path(file)
         self.data = self.load()
+
+        if not self.file.exists():
+            self.file.parent.mkdir(parents=True, exist_ok=True)
+            self.file.touch()
+            self.save()
 
     def load(self):
         if self.file.exists():
